@@ -15,6 +15,10 @@
             <i class="fa-solid fa-pencil center"></i>
         </div>
     </header>
+    <span *ngIf="QueryResponse && QueryResponse.response.length <= 0">
+        <label class="resultNotFound">Result not found for this query</label>
+    </span>
+
     <article class="airlineDetails" *ngFor="let flight of QueryResponse.response;let i=index">
         <div class="row">
             <div class="col-12">
@@ -47,12 +51,11 @@
             </div>
         </div>
         <div class="seatingClassWrapper">
-            <span class="seatingClass" *ngFor="let seatingClass of flight.seatingClasses;let f=index;" >
+            <span class="seatingClass" *ngFor="let seatingClass of flight.seatingClasses;let f=index;">
                 <label><strong>${{seatingClass.fair}}</strong></label>
                 <br>
                 <label>{{seatingClass.name}}</label>
             </span>
         </div>
     </article>
-
 </section>
