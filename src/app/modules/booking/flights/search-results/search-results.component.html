@@ -1,0 +1,58 @@
+<section>
+    <header class="header">
+        <div class="backArrow">
+            <i class="fa-solid fa-arrow-left" (click)="back.emit()"></i>
+        </div>
+        <div class="headerContent">
+            {{QueryResponse.searchQuery.departure.label}}
+            <i class="fa-solid fa-arrow-right"></i>
+            {{QueryResponse.searchQuery.destination.label}}
+            <br>
+            {{QueryResponse.searchQuery.departDate | date:'d MMM'}} -
+            {{QueryResponse.searchQuery.returnDate | date:'d MMM'}} | {{QueryResponse.searchQuery.traveler.label}}
+        </div>
+        <div class="editContent">
+            <i class="fa-solid fa-pencil center"></i>
+        </div>
+    </header>
+    <article class="airlineDetails" *ngFor="let flight of QueryResponse.response;let i=index">
+        <div class="row">
+            <div class="col-12">
+                <img [src]="flight.icon" class="logo" [alt]="flight.airport" width="50" height="50">
+                <span class="airlineName">{{flight.airlines}}</span>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2">
+                {{flight.departDate | date:'shortTime'}}
+                <br>
+                {{flight.departAirport}}
+            </div>
+            <div class="col-8 center">
+                {{flight.departDate | timeDiffCalculate:flight.returnDate}} Hrs.
+                <div class="md-stepper-horizontal orange">
+                    <div class="md-step active" *ngFor="let stop of flight.stops;let j=index">
+                        <div class="md-step-circle"></div>
+                        <div class="md-step-optional">{{stop}}</div>
+                        <div class="md-step-bar-left"></div>
+                        <div class="md-step-bar-right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                {{flight.returnDate | date:'shortTime'}}
+                <br>
+                {{flight.destinationAirport}}
+            </div>
+        </div>
+        <div class="seatingClassWrapper">
+            <span class="seatingClass" *ngFor="let seatingClass of flight.seatingClasses;let f=index;" >
+                <label><strong>${{seatingClass.fair}}</strong></label>
+                <br>
+                <label>{{seatingClass.name}}</label>
+            </span>
+        </div>
+    </article>
+
+</section>

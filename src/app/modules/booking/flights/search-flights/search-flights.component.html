@@ -1,0 +1,126 @@
+<ng-container *ngTemplateOutlet="!isSearched ? searchEngine:searchResult">
+</ng-container>
+
+<ng-template #searchEngine>
+    <form (ngSubmit)="onSubmitContactForm()" [formGroup]="travelForm">
+        <div class="row">
+            <div class="col-6">
+                <fieldset class="roundCorner fieldSetCustom">
+                    <legend>
+                        Departure:
+                    </legend>
+                    <select class="control" (change)="departureChanged($event)" formControlName="departure">
+                        <option value="">Choose Departure</option>
+                        <option *ngFor="let airport of AIRPORT_LIST" [ngValue]="airport">
+                            {{ airport.label }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <span
+                            *ngIf="travelForm.get('departure')?.touched && travelForm.get('departure')?.errors?.['required']">
+                            Please provide departure airport
+                        </span>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-6">
+                <fieldset class="roundCorner fieldSetCustom">
+                    <legend>
+                        Destination:
+                    </legend>
+                    <select class="control" (change)="departureChanged($event)" formControlName="destination">
+                        <option value="">Choose Destination</option>
+                        <option *ngFor="let airport of AIRPORT_LIST" [ngValue]="airport">
+                            {{ airport.label }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <span
+                            *ngIf="travelForm.get('departure')?.touched && travelForm.get('destination')?.errors?.['required']">
+                            Please provide departure airport
+                        </span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <fieldset class="roundCorner fieldSetCustom">
+                    <legend>
+                        Depart Date
+                    </legend>
+                    <input id="departDate" class="control" type="date" (change)="onDepartDateChanged()"
+                        formControlName="departDate">
+                    <div class="invalid-feedback">
+                        <span
+                            *ngIf="travelForm.get('departDate')?.touched && travelForm.get('departDate')?.errors?.['required']">
+                            Please provide departure airport
+                        </span>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="col-6">
+                <fieldset class="roundCorner fieldSetCustom">
+                    <legend>
+                        Return Date
+                    </legend>
+                    <input id="returnDate" class="control" type="date" formControlName="returnDate"
+                        [min]="travelForm.value.departDate">
+                    <div class="invalid-feedback">
+                        <span
+                            *ngIf="travelForm.get('returnDate')?.touched && travelForm.get('returnDate')?.errors?.['required']">
+                            Please provide departure airport
+                        </span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <fieldset class="roundCorner fieldSetCustom">
+                    <legend>
+                        Travelers:
+                    </legend>
+                    <select class="control" (change)="departureChanged($event)" formControlName="traveler">
+                        <option *ngFor="let travelerDate of TRAVELERS" [ngValue]="travelerDate">
+                            {{ travelerDate.label }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <span
+                            *ngIf="travelForm.get('traveler')?.touched && travelForm.get('traveler')?.errors?.['required']">
+                            Please provide departure airport
+                        </span>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-6">
+                <fieldset class="roundCorner fieldSetCustom">
+                    <legend>
+                        Class:
+                    </legend>
+                    <select class="control" (change)="departureChanged($event)" formControlName="class">
+                        <option *ngFor="let travelClass of TRAVEL_CLASS" [ngValue]="travelClass">
+                            {{ travelClass.label }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <span *ngIf="travelForm.get('class')?.touched && travelForm.get('class')?.errors?.['required']">
+                            Please provide departure airport
+                        </span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="button">Submit</button>
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #searchResult>
+    <app-search-results [QueryResponse]="queryResponse" (back)="toggleSearchPanel()"></app-search-results>
+</ng-template>

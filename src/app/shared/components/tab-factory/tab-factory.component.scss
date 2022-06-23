@@ -1,0 +1,35 @@
+@mixin tabMixin($color) {
+    border-bottom: 5px solid $color;
+    color: $color;
+    text-align: center;
+    min-width: 70px;
+    padding: 10px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.tab {
+    @include tabMixin(grey)
+}
+
+.tabSelected {
+    @include tabMixin(dodgerblue)
+}
+
+.tab:hover {
+    @include tabMixin(dodgerblue)
+}
+
+.tab-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 0.5%;
+    min-width: 100%;
+    overflow: auto;
+
+}
+
+.tabWrapper{
+    padding: 1%;
+    background: rgb(177 208 240 / 22%);
+}
