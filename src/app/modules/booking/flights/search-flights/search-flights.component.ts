@@ -73,7 +73,6 @@ export class SearchFlightsComponent implements AfterViewInit {
 
   toggleSearchPanel() {
     this.isSearched = this.isSearched ? false : true;
-    this.travelForm.reset();
   }
 
 
