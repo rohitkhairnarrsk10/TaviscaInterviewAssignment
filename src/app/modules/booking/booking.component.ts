@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdTab } from 'src/app/shared/components/tab-factory/tab-factory.component';
+import { WorkInProgressComponent } from 'src/app/shared/components/work-in-progress/work-in-progress.component';
 import {  SearchFlightsComponent } from './flights/search-flights/search-flights.component';
 
 @Component({
@@ -21,11 +22,11 @@ export class BookingComponent implements OnInit {
         { icon: "fa-solid fa-jet-fighter-up", name: "Flights" }
       ),
       new AdTab(
-        SearchFlightsComponent,
+        WorkInProgressComponent,
         { icon: "fa-solid fa-hotel", name: "Hotels" }
       ),
       new AdTab(
-        SearchFlightsComponent,
+        WorkInProgressComponent,
         { icon: "fa-solid fa-car", name: "Cars" }
       ),
      
