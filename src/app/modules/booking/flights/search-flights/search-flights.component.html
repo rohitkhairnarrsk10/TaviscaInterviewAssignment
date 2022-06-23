@@ -18,7 +18,7 @@
                     <div class="invalid-feedback">
                         <span
                             *ngIf="travelForm.get('departure')?.touched && travelForm.get('departure')?.errors?.['required']">
-                            Please provide the departure airport
+                            Please select the departure airport
                         </span>
                     </div>
                 </fieldset>
@@ -37,7 +37,7 @@
                     <div class="invalid-feedback">
                         <span
                             *ngIf="travelForm.get('departure')?.touched && travelForm.get('destination')?.errors?.['required']">
-                            Please provide the destination airport
+                            Please select the destination airport
                         </span>
                     </div>
                 </fieldset>
@@ -55,7 +55,7 @@
                     <div class="invalid-feedback">
                         <span
                             *ngIf="travelForm.get('departDate')?.touched && travelForm.get('departDate')?.errors?.['required']">
-                            Please provide the departure date
+                            Please select the departure date
                         </span>
                     </div>
                 </fieldset>
@@ -71,7 +71,7 @@
                     <div class="invalid-feedback">
                         <span
                             *ngIf="travelForm.get('returnDate')?.touched && travelForm.get('returnDate')?.errors?.['required']">
-                            Please provide the return date
+                            Please select the return date
                         </span>
                     </div>
                 </fieldset>
@@ -91,7 +91,7 @@
                     <div class="invalid-feedback">
                         <span
                             *ngIf="travelForm.get('traveler')?.touched && travelForm.get('traveler')?.errors?.['required']">
-                            Please provide departure airport
+                            Please select the travelers
                         </span>
                     </div>
                 </fieldset>
@@ -108,7 +108,7 @@
                     </select>
                     <div class="invalid-feedback">
                         <span *ngIf="travelForm.get('class')?.touched && travelForm.get('class')?.errors?.['required']">
-                            Please provide departure airport
+                            Please select the seating class
                         </span>
                     </div>
                 </fieldset>
